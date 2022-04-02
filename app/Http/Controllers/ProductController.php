@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\DocBlock\Tags\Return_;
 
 class ProductController extends Controller
 {
@@ -15,6 +16,8 @@ class ProductController extends Controller
     public function index()
     {
         //
+        $datos['products']=Product::paginate(5);
+        return view('product.index',$datos);
     }
 
     /**
@@ -25,6 +28,7 @@ class ProductController extends Controller
     public function create()
     {
         //
+        return view('product.create');
     }
 
     /**
@@ -36,6 +40,18 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
+        //$dataProduct = request()->all();
+
+        $dataProduct = request()->except('_token');
+
+        if($request->hasFile('Picture')){
+            $dataProduct['Picture']=$request->file('Picture')->store('uploads','public');
+        }
+
+        Product::insert($dataProduct);
+
+        return response()->json($dataProduct);
+
     }
 
     /**
@@ -78,8 +94,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
         //
+        Product::destroy($id);
+        return redirect('product');
     }
 }
