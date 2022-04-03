@@ -1,5 +1,6 @@
 show proudct list :)
 
+<a href="{{url('product/create')}}">Add New Product</a>
 <table class="table table-light">
     <thead class="thead-light">
     <tr>
@@ -16,11 +17,19 @@ show proudct list :)
       @foreach($products as $product)
         <tr>
             <td>{{$product->id}}</td>
-            <td>{{$product->Picture}}</td>
+            <td>
+                <img src="{{asset('storage').'/'.$product->Picture}}" width="100" alt="">
+            </td>
             <td>{{$product->Name}}</td>
             <td>{{$product->Description}}</td>
             <td>{{$product->Price}}</td>
-            <td>Edit |
+            <td>
+
+                <a href="{{url('/product/'.$product->id.'/edit')}}">
+                    Edit
+                </a>
+                |
+
 
             <form action="{{ url('/product/'.$product->id) }}" method="post">
               @csrf

@@ -6,6 +6,8 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\DocBlock\Tags\Return_;
 
+use Illuminate\Support\Facades\Storage;
+
 class ProductController extends Controller
 {
     /**
@@ -71,9 +73,12 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
         //
+        $product=Product::findOrFail($id);
+
+        return view('product.edit', compact('product'));
     }
 
     /**
@@ -83,9 +88,26 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
         //
+        $dataProduct = request()->except(['_token','_method']);
+
+        if ($request->hasFile('Picture')){
+
+            $product=Product::findOrFail($id);
+            Storage::delete('public/'.$product->Picture);
+            $dataProduct['Picture']=$request->file('Picture')->store('uploads','public');
+        }
+
+
+
+
+        Product::where('id','=',$id)->update($dataProduct);
+        $product=Product::findOrFail($id);
+        return view('product.edit', compact('product'));
+
+
     }
 
     /**
