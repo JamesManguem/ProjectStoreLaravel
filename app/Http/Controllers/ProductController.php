@@ -52,7 +52,8 @@ class ProductController extends Controller
 
         Product::insert($dataProduct);
 
-        return response()->json($dataProduct);
+        //return response()->json($dataProduct);
+        return redirect('product')->with('message', 'Product added successfully');
 
     }
 
@@ -119,7 +120,16 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
-        Product::destroy($id);
-        return redirect('product');
+
+        $product=Product::findOrFail($id);
+
+        if(Storage::delete('public/'.$product->Picture)){
+            Product::destroy($id);
+        }
+
+
+
+
+        return redirect('product')->with('message','Removed Product');
     }
 }

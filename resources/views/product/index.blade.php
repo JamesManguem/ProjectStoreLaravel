@@ -1,4 +1,7 @@
 show proudct list :)
+@if(Session::has('message'))
+    {{Session::get('message')}}
+@endif
 
 <a href="{{url('product/create')}}">Add New Product</a>
 <table class="table table-light">
