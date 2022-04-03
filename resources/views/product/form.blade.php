@@ -1,3 +1,6 @@
+<h1>{{ $mode }}Product</h1>
+
+
 
 <label for="Name">Name</label>
 <input type="text" name="Name" value="{{ isset ($product->Name)? $product->Name:''}}" id="Name">
@@ -14,7 +17,7 @@
 @endif
 <input type="file" name="Picture"  id="Picture">
 <br>
-<input type="submit" value="Save">
+<input type="submit" value="{{$mode}}">
 
 
 <a href="{{url('product/')}}">Regresar</a>
