@@ -26,10 +26,10 @@ Route::get('/product', function () {
 Route::get('/product/create',[ProductController::class,'create']);
 */
 
-Route::resource('product', ProductController::class);
+Route::resource('product', ProductController::class)->middleware('auth');
 
 
-Auth::routes();
+Auth::routes(['register'=>false,'reset'=>false]);
 
 Route::get('/home', [ProductController::class, 'index'])->name('home');
 

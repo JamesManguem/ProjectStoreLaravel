@@ -1,4 +1,9 @@
-Formulario de creación de productos
+@extends('layouts.app')
+@section('content')
+<div class="container">
+
+
+
 <form action="{{url('/product')}}" method="post" enctype="multipart/form-data">
     @csrf
     @include('product.form',['mode'=>'Create']);
@@ -6,3 +11,5 @@ Formulario de creación de productos
 
 
 </form>
+</div>
+@endsection

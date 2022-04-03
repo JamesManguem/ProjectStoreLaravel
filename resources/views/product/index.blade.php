@@ -1,9 +1,15 @@
-show proudct list :)
+@extends('layouts.app')
+@section('content')
+<div class="container">
+
 @if(Session::has('message'))
     {{Session::get('message')}}
 @endif
 
-<a href="{{url('product/create')}}">Add New Product</a>
+<a href="{{url('product/create')}}" class="btn btn-success">Add New Product</a>
+    <br/>
+    <br/>
+</div>
 <table class="table table-light">
     <thead class="thead-light">
     <tr>
@@ -21,25 +27,25 @@ show proudct list :)
         <tr>
             <td>{{$product->id}}</td>
             <td>
-                <img src="{{asset('storage').'/'.$product->Picture}}" width="100" alt="">
+                <img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$product->Picture}}" width="100" alt="">
             </td>
             <td>{{$product->Name}}</td>
             <td>{{$product->Description}}</td>
             <td>{{$product->Price}}</td>
             <td>
 
-                <a href="{{url('/product/'.$product->id.'/edit')}}">
+                <a href="{{url('/product/'.$product->id.'/edit')}}" class="btn btn-warning">
                     Edit
                 </a>
                 |
 
 
-            <form action="{{ url('/product/'.$product->id) }}" method="post">
+            <form action="{{ url('/product/'.$product->id) }}" class="d-inline" method="post">
               @csrf
                 {{method_field('DELETE')}}
 
 
-                <input type="submit"  onclick="return confirm('Are you sure you want to delete the product?')" value="Delete">
+                <input class="btn btn-danger" type="submit"  onclick="return confirm('Are you sure you want to delete the product?')" value="Delete">
 
             </form>
 
@@ -52,5 +58,5 @@ show proudct list :)
 
 
 </table>
-
-
+</div>
+@endsection
