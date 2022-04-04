@@ -42,6 +42,23 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
+
+        $campos=[
+            'Name'=>'required|string|max:100',
+            'Description'=>'required|string|max:100',
+            'Price'=>'required|string|max:100',
+            'Picture'=>'required|max:10000|mimes:jpeg,png,jpg',
+        ];
+        $mensaje=[
+            'required'=>'The  :attribute is required ',
+            'Picture.required'=>'The picture is required'
+        ];
+
+        $this->validate($request, $campos, $mensaje);
+
+
+
+
         //$dataProduct = request()->all();
 
         $dataProduct = request()->except('_token');
@@ -91,6 +108,29 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $campos=[
+            'Name'=>'required|string|max:100',
+            'Description'=>'required|string|max:100',
+            'Price'=>'required|string|max:100',
+            'Picture'=>'required|max:10000|mimes:jpeg,png,jpg',
+        ];
+        $mensaje=[
+            'required'=>'The  :attribute is required ',
+            'Picture.required'=>'The picture is required'
+        ];
+
+
+        if($request->hasFile('Picture')){
+           $campos=['Picture'=>'required|max:10000|mimes:jpeg,png,jpg'];
+           $mensaje=['Foto.required'=>'The picture is required'];
+        }
+
+        $this->validate($request, $campos, $mensaje);
+
+
+
+
         //
         $dataProduct = request()->except(['_token','_method']);
 
@@ -106,9 +146,9 @@ class ProductController extends Controller
 
         Product::where('id','=',$id)->update($dataProduct);
         $product=Product::findOrFail($id);
-        return view('product.edit', compact('product'));
+        //return view('product.edit', compact('product'));
 
-
+        return redirect('product')->with('mensaje','Modified Product');
     }
 
     /**
@@ -131,5 +171,7 @@ class ProductController extends Controller
 
 
         return redirect('product')->with('message','Removed Product');
+
+
     }
 }

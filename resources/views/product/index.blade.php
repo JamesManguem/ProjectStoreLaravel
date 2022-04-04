@@ -2,9 +2,21 @@
 @section('content')
 <div class="container">
 
-@if(Session::has('message'))
-    {{Session::get('message')}}
-@endif
+    <div class="alert alert-success fade show" role="alert">
+
+        @if(Session::has('mensaje'))
+            {{Session::get('mensaje')}}
+        @endif
+
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+    </div>
+
+
+
+
 
 <a href="{{url('product/create')}}" class="btn btn-success">Add New Product</a>
     <br/>
