@@ -25,7 +25,7 @@
 <table class="table table-light">
     <thead class="thead-light">
     <tr>
-        <th>#</th>
+        <th>Id</th>
         <th>Picture</th>
         <th>Name</th>
         <th>Description</th>
@@ -74,3 +74,5 @@
 
 </div>
 @endsection
+
+
