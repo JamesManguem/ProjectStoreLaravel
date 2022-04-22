@@ -29,7 +29,9 @@ Route::get('/product/create',[ProductController::class,'create']);
 Route::resource('product', ProductController::class)->middleware('auth');
 
 
-Auth::routes(['register'=>false,'reset'=>false]);
+Auth::routes();
+
+#['register'=>false,'reset'=>false]
 
 Route::get('/home', [ProductController::class, 'index'])->name('home');
 

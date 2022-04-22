@@ -49,6 +49,9 @@
                                 <div class="product-description">
                                     <label for="Description">Description</label>
                                     <input type="text" class="form-control" name="Description"  value="{{ isset ($product->Description ) ? $product ->Description:old('Description') }}" id="Description">
+
+
+                                    </textarea>
                                     <br>
                                     <input class="btn btn-success" type="submit" value="{{$mode}}">
                                     <a class="btn btn-primary" href="{{url('product/')}}">Back</a>
