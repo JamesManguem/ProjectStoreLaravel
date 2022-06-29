@@ -36,6 +36,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('product.index') }}">{{ __('Products') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url("/product/contact")}}">Contact</a>
+                        </li>
 
 
 

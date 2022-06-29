@@ -18,7 +18,7 @@
 
 
 
-<a href="{{url('product/create')}}" class="btn btn-success">Add New Product</a>
+<a href="{{url('product/create')}}" class="btn btn-success">Agregar Nuevo Producto</a>
     <br/>
     <br/>
 </div>
@@ -26,11 +26,11 @@
     <thead class="thead-light">
     <tr>
         <th>Id</th>
-        <th>Picture</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Price</th>
-        <th>Actions</th>
+        <th>Foto</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th>Acciones</th>
     </tr>
 
     </thead>
@@ -47,7 +47,7 @@
             <td>
 
                 <a href="{{url('/product/'.$product->id.'/edit')}}" class="btn btn-warning">
-                    Edit
+                    Editar
                 </a>
                 |
 
@@ -57,7 +57,7 @@
                 {{method_field('DELETE')}}
 
 
-                <input class="btn btn-danger" type="submit"  onclick="return confirm('Are you sure you want to delete the product?')" value="Delete">
+                <input class="btn btn-danger" type="submit"  onclick="return confirm('¿Esta seguro que desea eliminar este producto?')" value="Eliminar">
 
             </form>
 

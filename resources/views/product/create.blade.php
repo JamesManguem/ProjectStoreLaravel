@@ -6,7 +6,7 @@
 
 <form action="{{url('/product')}}" method="post" enctype="multipart/form-data">
     @csrf
-    @include('product.form',['mode'=>'Create']);
+    @include('product.form',['mode'=>'Crear']);
 
 
 

@@ -15,26 +15,34 @@ use App\Http\Controllers\ProductController;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('welcome');
 });
 
-/*
+
 Route::get('/product', function () {
     return view('product.index');
 });
 
+Route::get('/product/contact', function () {
+    return view('product.contact');
+});
+
+/*
 Route::get('/product/create',[ProductController::class,'create']);
 */
 
-Route::resource('product', ProductController::class)->middleware('auth');
+
+Route::resource('product', ProductController::class);
 
 
-Auth::routes();
+#Auth::routes();
 
 #['register'=>false,'reset'=>false]
 
-Route::get('/home', [ProductController::class, 'index'])->name('home');
+#Route::get('/', [ProductController::class, 'index'])->name('home');
 
+/*
 Route::group(['middleware' => 'auth'], function (){
     Route::get('/', [ProductController::class, 'index'])->name('home');
 });
+*/

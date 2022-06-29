@@ -1,4 +1,4 @@
-<h1>{{ $mode }}Product</h1>
+<h1>{{ $mode }}Producto</h1>
 
 
 @if(count($errors)>0)
@@ -39,22 +39,22 @@
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 pl-xl-0 pl-lg-0 pl-md-0 border-left m-b-30">
                             <div class="product-details">
                                 <div class="border-bottom pb-3 mb-3">
-                                    <label for="Name">Name</label>
+                                    <label for="Name">Nombre</label>
                                     <input type="text" class="form-control" name="Name" value="{{ isset ($product->Name)? $product->Name:old('Name')}}" id="Name">
 
-                                    <label for="Price">Price</label>
+                                    <label for="Price">Precio</label>
                                     <input class="form-control" type="text" name="Price"  value="{{ isset ($product->Price) ? $product->Price:old('Price')}}" id="Price">
                                 </div>
 
                                 <div class="product-description">
-                                    <label for="Description">Description</label>
+                                    <label for="Description">Descripción</label>
                                     <input type="text" class="form-control" name="Description"  value="{{ isset ($product->Description ) ? $product ->Description:old('Description') }}" id="Description">
 
 
                                     </textarea>
                                     <br>
                                     <input class="btn btn-success" type="submit" value="{{$mode}}">
-                                    <a class="btn btn-primary" href="{{url('product/')}}">Back</a>
+                                    <a class="btn btn-primary" href="{{url('product/')}}">Regresar</a>
                                 </div>
                             </div>
                         </div>
